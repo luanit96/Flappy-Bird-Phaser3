@@ -1,11 +1,11 @@
-import PreloadScene from '../scenes/PreloadScene';
-import GameScene from '../scenes/GameScene';
+import PreloadScene from '../Scene/PreloadScene';
+import GameScene from '../Scene/GameScene';
 
-export const config = {
+export default {
     type : Phaser.WEBGL,
     parent : 'Flappy bird phaser 3',
-    width : 800,
-    height : 600,
+    width: 800,
+    height: 600,
     physics : {
         default : 'arcade',
         arcade : {
@@ -13,5 +13,5 @@ export const config = {
             debug : false
         }
     },
-    scene : [ PreloadScene,GameScene ]
+    scene : [ PreloadScene, GameScene ]
 }
