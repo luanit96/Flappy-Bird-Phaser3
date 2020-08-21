@@ -1,6 +1,6 @@
 import Config  from '../Config/config';
 import Style from '../Css/style';
-import Bird from '../Class/Bird';
+import Bird from '../Class/Bird/Bird';
 import Options from '../Constant/options';
 
 export default class GameScene extends Phaser.Scene {

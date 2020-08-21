@@ -1,6 +1,7 @@
-import Options from '../Constant/options';
-import Config from '../Config/config';
+import Options from '../../Constant/options';
+import Config from '../../Config/config';
 
+//Class Pipe
 export default class Pipe extends Phaser.Scene {
     constructor(scene) {
         super(scene);
@@ -12,6 +13,7 @@ export default class Pipe extends Phaser.Scene {
     pipe() {
         //sound add
         this.audioScore = this.scene.sound.add('score');
+        
         this.pipes = this.scene.physics.add.group();
         //loop event
         this.timer = this.scene.time.addEvent({

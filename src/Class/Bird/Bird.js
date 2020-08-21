@@ -1,9 +1,10 @@
-import Config from '../Config/config';
-import Style from '../Css/style';
-import Options from '../Constant/options';
-import GameScene from '../Scene/GameScene';
-import Pipe from './Pipe';
+import Config from '../../Config/config';
+import Style from '../../Css/style';
+import Options from '../../Constant/options';
+import GameScene from '../../Scene/GameScene';
+import Pipe from '../Pipe/Pipe';
 
+//Class Bird
 export default class Bird extends Phaser.Scene {
     constructor(scene) {
         super(scene);
