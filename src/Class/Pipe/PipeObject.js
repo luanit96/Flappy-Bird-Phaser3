@@ -1,12 +1,11 @@
 import Options from '../../Constant/options';
 import Config from '../../Config/config';
+import Key from '../../Key/key';
 
-//Class Pipe
-export default class Pipe extends Phaser.Scene {
-    constructor(scene) {
-        super(scene);
-        scene.add.existing(this);
+export default class PipeObject {
+    constructor(scene, keyPipe = Key.pipe) {
         this.scene = scene;
+        this.keyPipe = keyPipe;
         this.pipe();
     }
 

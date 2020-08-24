@@ -1,8 +1,9 @@
 import Config from '../Config/config';
+import Key from '../Key/key';
 
 export default class PreloadScene extends Phaser.Scene {
     constructor() {
-        super({ key: 'PreloadScene' });
+        super({ key: Key.preloadScene });
     }
 
     preload() {
@@ -22,7 +23,7 @@ export default class PreloadScene extends Phaser.Scene {
         //click play game
         this.play.on('pointerdown', () => {
             this.play.setScale(0.8);
-            this.scene.start('GameScene');
+            this.scene.start(Key.gameScene);
         });
         this.play.on('pointerup', () => this.play.setScale(1.2));
     }

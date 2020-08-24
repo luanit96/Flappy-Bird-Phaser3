@@ -1,15 +1,13 @@
+import PipeObject from '../Pipe/PipeObject';
+import Key from '../../Key/key';
 import Config from '../../Config/config';
-import Style from '../../Css/style';
 import Options from '../../Constant/options';
-import GameScene from '../../Scene/GameScene';
-import Pipe from '../Pipe/Pipe';
+import Style from '../../Css/style';
 
-//Class Bird
-export default class Bird extends Phaser.Scene {
-    constructor(scene) {
-        super(scene);
-        scene.add.existing(this);
+export default class BirdObject {
+    constructor(scene, birdKey = Key.bird) {
         this.scene = scene;
+        this.birdKey = birdKey;
         this.addBird();
     }
 
@@ -22,7 +20,7 @@ export default class Bird extends Phaser.Scene {
         this.pointer = this.scene.input.on('pointerdown', this.clickPointerDown, this);
         this.scene.input.on('pointerup', this.clickPointerUp, this);
         //Class Pipe
-        this.pipes = new Pipe(this.scene);
+        this.pipes = new PipeObject(this.scene, Key.pipe);
         this.platformCollider = this.scene.physics.add.collider(this.bird, this.pipes.pipes, this.hitPipes, null, this);
         this.scene.physics.add.collider(this.bird, this.scene.groundSprite, this.hitGround, null, this); 
     }
@@ -82,6 +80,6 @@ export default class Bird extends Phaser.Scene {
         Options.countScore = 0;
         Options.score = 0;
         this.scene.textScore.setText('SCORE:' + Options.score);
-        this.scene.scene.start('GameScene');
+        this.scene.scene.start(Key.gameScene);
     }
 }
