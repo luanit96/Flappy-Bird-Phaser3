@@ -12,21 +12,18 @@ export default class BirdObject {
     }
 
     addBird() {
-        //sound add
-        this.audioFlap = this.scene.sound.add('flap');
-        this.audioHit = this.scene.sound.add('hit');
         this.bird = this.scene.physics.add.sprite(Config.width - 650, Config.height - 500, 'spriteImage', 'bird.png').setScale(1.5);
         this.bird.body.gravity.y = 1000;
         this.pointer = this.scene.input.on('pointerdown', this.clickPointerDown, this);
         this.scene.input.on('pointerup', this.clickPointerUp, this);
-        //Class Pipe
+        //Class PipeObject
         this.pipes = new PipeObject(this.scene, Key.pipe);
         this.platformCollider = this.scene.physics.add.collider(this.bird, this.pipes.pipes, this.hitPipes, null, this);
         this.scene.physics.add.collider(this.bird, this.scene.groundSprite, this.hitGround, null, this); 
     }
 
     clickPointerDown() {
-        this.audioFlap.play();
+        this.scene.audioObject.audioFlap.play();
         this.bird.setAngle(-50);
         this.bird.body.setVelocityY(-400);
         if (this.bird.body.y < 0) {
@@ -39,7 +36,7 @@ export default class BirdObject {
     }
 
     hitPipes(bird, pipe) {
-        this.audioHit.play();
+        this.scene.audioObject.audioHit.play();
         this.pipes.timer.remove();
         bird.body.x = 300;
         bird.body.y = 0;
@@ -58,7 +55,7 @@ export default class BirdObject {
         this.pointer.removeAllListeners();
         this.scene.physics.world.removeCollider(this.platformCollider);
         this.scene.add.sprite(Config.width / 2, Config.height / 2 - 50, 'spriteImage', 'score.png');
-        this.scene.add.sprite(Config.width / 2, Config.height - 200, 'spriteImage', 'restart.png').setInteractive();
+        this.restart = this.scene.add.sprite(Config.width / 2, Config.height - 200, 'spriteImage', 'restart.png').setInteractive();
         var width;
         if(Options.score >= 10000) {
             width = Config.width / 2 - 42;
@@ -72,7 +69,7 @@ export default class BirdObject {
             width = Config.width / 2 - 13;
         }
         this.scene.add.text(width, Config.height - 350, Options.score, Style.point);
-        this.scene.input.on('pointerdown', () => this.resetGame(), this);
+        this.restart.on('pointerdown', () => this.resetGame(), this);
     }
 
     resetGame() {

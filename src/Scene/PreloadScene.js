@@ -20,7 +20,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.add.sprite(0, 0, 'spriteImage', 'background.jpg').setOrigin(0, 0);
         this.add.sprite(Config.width / 2, Config.height / 2 - 100, 'spriteImage', 'message.png');
         this.play = this.add.sprite(Config.width / 2, Config.height - 200, 'spriteImage', 'play.png').setScale(1.2).setInteractive();
-        //click play game
+        //play game
         this.play.on('pointerdown', () => {
             this.play.setScale(0.8);
             this.scene.start(Key.gameScene);

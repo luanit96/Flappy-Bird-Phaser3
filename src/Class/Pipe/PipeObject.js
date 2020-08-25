@@ -10,9 +10,6 @@ export default class PipeObject {
     }
 
     pipe() {
-        //sound add
-        this.audioScore = this.scene.sound.add('score');
-        
         this.pipes = this.scene.physics.add.group();
         //loop event
         this.timer = this.scene.time.addEvent({
@@ -47,7 +44,7 @@ export default class PipeObject {
     }
 
     updatePoint(score) {
-        this.audioScore.play();
+        this.scene.audioObject.audioScore.play();
         Options.score += score;
         this.scene.textScore.setText('SCORE:' + Options.score);
     }
