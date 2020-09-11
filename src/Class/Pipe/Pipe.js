@@ -1,8 +1,8 @@
 import Options from '../../Constant/options';
 import Config from '../../Config/config';
 import Key from '../../Key/key';
-
-export default class PipeObject {
+//Class Pipe
+export default class Pipe {
     constructor(scene, keyPipe = Key.pipe) {
         this.scene = scene;
         this.keyPipe = keyPipe;
@@ -21,6 +21,8 @@ export default class PipeObject {
         });
     }
 
+    /*end function pipe*/
+
     addRowsPipe() {
         const min = 1, max = 7;
         const hole = Phaser.Math.Between(min, max);
@@ -35,6 +37,8 @@ export default class PipeObject {
         }
     }
 
+    /*end function add rows pipe*/
+
     addOnePipe(x, y) {
         let pipeColor = this.scene.background.frame.name === 'background.jpg' ? 'pipe.jpg' : 'pipe-red.jpg';
         let pipe = this.scene.physics.add.sprite(x, y, 'spriteImage', pipeColor);
@@ -43,9 +47,13 @@ export default class PipeObject {
         pipe.setImmovable();
     }
 
+    /*end function add one pipe*/
+
     updatePoint(score) {
         this.scene.audioObject.audioScore.play();
         Options.score += score;
         this.scene.textScore.setText('SCORE:' + Options.score);
     }
+
+    /*end function update point*/
 }

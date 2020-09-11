@@ -1,6 +1,6 @@
 import Config  from '../Config/config';
 import Style from '../Css/style';
-import BirdObject from '../Class/Bird/BirdObject';
+import Bird from '../Class/Bird/Bird';
 import Options from '../Constant/options';
 import Audio from '../Class/Audio/Audio';
 import Key from '../Key/key';
@@ -29,7 +29,7 @@ export default class GameScene extends Phaser.Scene {
         this.groundSprite = this.physics.add.staticGroup();
         this.groundSprite.create(Config.width / 2, Config.height - 30, 'spriteImage', 'ground-sprite.jpg');
         this.textScore = this.add.text(Config.width - 784, Config.height - 584, 'SCORE:' + Options.score, Style.score);
-        //Class BirdObject
-        const bird = new BirdObject(this, Key.bird);
+        //Class Bird
+        const bird = new Bird(this, Key.bird);
     }
 }

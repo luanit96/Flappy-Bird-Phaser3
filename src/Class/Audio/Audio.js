@@ -1,5 +1,5 @@
 import Key from '../../Key/key';
-
+//Class Audio
 export default class Audio {
     constructor(scene, keyAudio = Key.audio) {
         this.scene = scene;

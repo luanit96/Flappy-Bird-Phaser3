@@ -8,7 +8,7 @@ export default class PreloadScene extends Phaser.Scene {
 
     preload() {
         //load image file json
-        this.load.path = '../../assets/json/';
+        this.load.path = '../../assets/';
         this.load.atlas('spriteImage', 'image/spriteImage.png', 'image/spriteImage.json');
         this.load.audio('flap', 'audio/flap.mp3');
         this.load.audio('hit', 'audio/hit.mp3');
