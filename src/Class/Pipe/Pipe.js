@@ -1,11 +1,9 @@
 import Options from '../../Constant/options';
 import Config from '../../Config/config';
-import Key from '../../Key/key';
 //Class Pipe
 export default class Pipe {
-    constructor(scene, keyPipe = Key.pipe) {
+    constructor(scene) {
         this.scene = scene;
-        this.keyPipe = keyPipe;
         this.pipe();
     }
 

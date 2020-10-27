@@ -1,13 +1,11 @@
 import Pipe from '../Pipe/Pipe';
-import Key from '../../Key/key';
 import Config from '../../Config/config';
 import Options from '../../Constant/options';
 import Style from '../../Css/style';
 //Class Bird
 export default class Bird {
-    constructor(scene, birdKey = Key.bird) {
+    constructor(scene) {
         this.scene = scene;
-        this.birdKey = birdKey;
         this.addBird();
     }
 
@@ -17,7 +15,7 @@ export default class Bird {
         this.pointer = this.scene.input.on('pointerdown', this.clickPointerDown, this);
         this.scene.input.on('pointerup', this.clickPointerUp, this);
         //Class Pipe
-        this.pipes = new Pipe(this.scene, Key.pipe);
+        this.pipes = new Pipe(this.scene);
         this.platformCollider = this.scene.physics.add.collider(this.bird, this.pipes.pipes, this.hitPipes, null, this);
         this.scene.physics.add.collider(this.bird, this.scene.groundSprite, this.hitGround, null, this); 
     }
@@ -89,7 +87,7 @@ export default class Bird {
         Options.countScore = 0;
         Options.score = 0;
         this.scene.textScore.setText('SCORE:' + Options.score);
-        this.scene.scene.start(Key.gameScene);
+        this.scene.scene.start('GameScene');
     }
 
     /*end function reset game*/

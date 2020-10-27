@@ -1,17 +1,17 @@
 import Phaser from 'phaser';
 import Config  from './Config/config';
 
-export default class Game {
+class Game {
     constructor() {
         new Phaser.Game(Config);
     }
 
     resize() {
-        var canvas = document.querySelector("canvas");
-        var windowWidth = window.innerWidth;
-        var windowHeight = window.innerHeight;
-        var windowRatio = windowWidth / windowHeight;
-        var gameRatio = Config.width / Config.height;
+        const canvas = document.querySelector("canvas");
+        let windowWidth = window.innerWidth;
+        let windowHeight = window.innerHeight;
+        let windowRatio = windowWidth / windowHeight;
+        let gameRatio = Config.width / Config.height;
     
         if(windowRatio < gameRatio){
             canvas.style.width = windowWidth + "px";
