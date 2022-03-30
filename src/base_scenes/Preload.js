@@ -1,14 +1,14 @@
-import Config from '../Config/config';
+import Config from '../config';
 
 export default class PreloadScene extends Phaser.Scene {
     constructor() {
-        super('PreloadScene');
+        super('Preload');
     }
 
     preload() {
         //load image file json
         this.load.path = '../../assets/';
-        this.load.atlas('spriteImage', 'image/spriteImage.png', 'image/spriteImage.json');
+        this.load.atlas('spriteImage', 'images/spriteImage.png', 'images/spriteImage.json');
         this.load.audio('flap', 'audio/flap.mp3');
         this.load.audio('hit', 'audio/hit.mp3');
         this.load.audio('score', 'audio/score.mp3');
@@ -21,8 +21,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.play = this.add.sprite(Config.width / 2, Config.height - 200, 'spriteImage', 'play.png').setScale(1.2).setInteractive();
         //play game
         this.play.on('pointerdown', () => {
-            this.play.setScale(0.8);
-            this.scene.start('GameScene');
+            this.play.setScale(0.8); this.scene.start('Game');
         }, this);
         this.play.on('pointerup', () => this.play.setScale(1.2), this);
     }

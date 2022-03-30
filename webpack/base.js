@@ -1,10 +1,16 @@
 const webpack = require("webpack");
 const path = require("path");
+const dotenv = require('dotenv').config();
+const port = process.env.PORT || 1000;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   mode: "development",
+  devServer: {
+    open: true,
+    port
+  },
   devtool: "eval-source-map",
   module: {
     rules: [

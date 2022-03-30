@@ -1,25 +1,24 @@
-import Options from '../../Constant/options';
-import Config from '../../Config/config';
+import Parameters from '../parameters';
+import Config from '../config';
+
 //Class Pipe
 export default class Pipe {
     constructor(scene) {
         this.scene = scene;
-        this.pipe();
+        this.renderPipe();
     }
 
-    pipe() {
+    renderPipe() {
         this.pipes = this.scene.physics.add.group();
         //loop event
         this.timer = this.scene.time.addEvent({
-            delay: Options.delay,
+            delay: Parameters.delay,
             callback: this.addRowsPipe,
             callbackScope: this,
             paused: false,
             loop: true
         });
     }
-
-    /*end function pipe*/
 
     addRowsPipe() {
         const min = 1, max = 7;
@@ -29,13 +28,11 @@ export default class Pipe {
                 this.addOnePipe(Config.width - 100, i * 50 + 10);
             }
         }
-        Options.countScore++;
-        if (Options.countScore >= 3) {
-            this.updatePoint(Options.point);
+        Parameters.countScore++;
+        if (Parameters.countScore >= 3) {
+            this.updatePoint(Parameters.point);
         }
     }
-
-    /*end function add rows pipe*/
 
     addOnePipe(x, y) {
         let pipeColor = this.scene.background.frame.name === 'background.jpg' ? 'pipe.jpg' : 'pipe-red.jpg';
@@ -45,13 +42,10 @@ export default class Pipe {
         pipe.setImmovable();
     }
 
-    /*end function add one pipe*/
 
     updatePoint(score) {
         this.scene.audioObject.audioScore.play();
-        Options.score += score;
-        this.scene.textScore.setText('SCORE:' + Options.score);
+        Parameters.score += score;
+        this.scene.textScore.setText('SCORE:' + Parameters.score);
     }
-
-    /*end function update point*/
 }

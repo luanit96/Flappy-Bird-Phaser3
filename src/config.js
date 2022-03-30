@@ -1,5 +1,5 @@
-import PreloadScene from '../Scene/PreloadScene';
-import GameScene from '../Scene/GameScene';
+import Preload from './base_scenes/Preload';
+import Game from './base_scenes/Game';
 
 export default {
     type : Phaser.WEBGL,
@@ -13,5 +13,5 @@ export default {
             debug : false
         }
     },
-    scene : [ PreloadScene, GameScene ]
+    scene : [ Preload, Game ]
 }
