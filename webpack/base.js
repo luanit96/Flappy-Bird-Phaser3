@@ -1,6 +1,6 @@
 const webpack = require("webpack");
 const path = require("path");
-const dotenv = require('dotenv').config();
+const dotenv = require("dotenv").config();
 const port = process.env.PORT || 1000;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -32,9 +32,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin({
-      root: path.resolve(__dirname, "../")
-    }),
+    new CleanWebpackPlugin(),
     new webpack.DefinePlugin({
       CANVAS_RENDERER: JSON.stringify(true),
       WEBGL_RENDERER: JSON.stringify(true)
